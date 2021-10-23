@@ -54,13 +54,26 @@ class Stack:
         """Adds a new element to the top of the stack. It must be implemented in O(1) amortized runtime
         complexity."""
 
+        # Adds the element to the 'end'/top of the stack.
         self._da_val.append(value)
 
     def pop(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        """Removes the top element from the stack and returns its value. Implemented in O(1) amortized
+        runtime complexity. If the stack is empty, raises a custom StackException."""
+
+        # If the stack is empty, raises exception.
+        if self._da_val.is_empty():
+            raise StackException
+
+        # Must get value before removal, calls get_at_index method to return the element from the top of the stack.
+        top_element = self._da_val.get_at_index(self.size()-1)
+        # Calls remove_at_index method to remove the element from the top.
+        self._da_val.remove_at_index(self.size() - 1)
+
+        # Returns the element from the top of the stack that was removed.
+        return top_element
+
+
 
     def top(self) -> object:
         """
