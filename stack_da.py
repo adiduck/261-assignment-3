@@ -73,14 +73,16 @@ class Stack:
         # Returns the element from the top of the stack that was removed.
         return top_element
 
-
-
     def top(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        """Returns the value from the top element of the stack without removing it. It must be implemented
+        with O(1) runtime complexity. If the stack is empty, the method raises a custom StackException."""
 
+        # If the stack is empty, raises exception.
+        if self._da_val.is_empty():
+            raise StackException
+
+        # Calls the get_at_index method to return the element from the top of the stack.
+        return self._da_val.get_at_index(self.size()-1)
 
 # ------------------- BASIC TESTING -----------------------------------------
 
