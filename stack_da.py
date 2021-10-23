@@ -1,9 +1,10 @@
-# Name:
-# OSU Email:
+# Name: Alexandra Diduck
+# OSU Email: diducka@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 10/25/2021
+# Description: Implements a Stack ADT class that uses the Dynamic Array data structure as the
+# underlying data storage.
 
 from dynamic_array import *
 
@@ -50,10 +51,10 @@ class Stack:
     # -----------------------------------------------------------------------
 
     def push(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        """Adds a new element to the top of the stack. It must be implemented in O(1) amortized runtime
+        complexity."""
+
+        self._da_val.append(value)
 
     def pop(self) -> object:
         """

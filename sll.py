@@ -1,8 +1,8 @@
-# Name:
-# OSU Email:
+# Name: Alexandra Diduck
+# OSU Email: diducka@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
+# Assignment: 3
+# Due Date: 10/25/2021
 # Description:
 
 
@@ -78,16 +78,25 @@ class LinkedList:
     # ------------------------------------------------------------------ #
 
     def add_front(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        """Method adds a new node at the beginning of the list (right after the front sentinel)."""
+
+        # Creates a new node with the passed value.
+        new_node = SLNode(value)
+
+        new_node._next = self._head._next
+        self._head._next = new_node
 
     def add_back(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        # traverse the list to find last node
+        """Method adds a new node at the end of the list (right before the sentinel)."""
+
+        # new_node = SLNode(value)
+        #
+        # while self._head._next != self._tail:
+        #     self._head = self._head._next
+        #     self._head._next = self._head._next._next
+        # self._head._next = new_node
+        # new_node._next = self._tail
+
         pass
 
     def insert_at_index(self, index: int, value: object) -> None:
@@ -151,24 +160,24 @@ class LinkedList:
 if __name__ == '__main__':
     pass
 
-    # print('\n# add_front example 1')
-    # list = LinkedList()
-    # print(list)
-    # list.add_front('A')
-    # list.add_front('B')
-    # list.add_front('C')
-    # print(list)
-    #
-    #
-    # print('\n# add_back example 1')
-    # list = LinkedList()
-    # print(list)
-    # list.add_back('C')
-    # list.add_back('B')
-    # list.add_back('A')
-    # print(list)
-    #
-    #
+    print('\n# add_front example 1')
+    list = LinkedList()
+    print(list)
+    list.add_front('A')
+    list.add_front('B')
+    list.add_front('C')
+    print(list)
+
+
+    print('\n# add_back example 1')
+    list = LinkedList()
+    print(list)
+    list.add_back('C')
+    list.add_back('B')
+    list.add_back('A')
+    print(list)
+
+
     # print('\n# insert_at_index example 1')
     # list = LinkedList()
     # test_cases = [(0, 'A'), (0, 'B'), (1, 'C'), (3, 'D'), (-1, 'E'), (5, 'F')]
