@@ -1,8 +1,9 @@
-# Name:
-# OSU Email:
-# Course: CS261 - _data Structures
-# Assignment:
-# Due _date:
+# Name: Alexandra Diduck
+# OSU Email: diducka@oregonstate.edu
+# Course: CS261 - Data Structures
+# Assignment: 2
+# Due Date: 10/18/21
+# Description:
 # Description:
 
 from dynamic_array import *
@@ -53,7 +54,8 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        pass
+
+        self._da.append(value)
 
     def dequeue(self) -> object:
         """
