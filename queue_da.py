@@ -1,10 +1,10 @@
 # Name: Alexandra Diduck
 # OSU Email: diducka@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment: 2
-# Due Date: 10/18/21
-# Description:
-# Description:
+# Assignment: 3
+# Due Date: 10/25/21
+# Description: Implements a Queue ADT class that uses a Dynamic Array data structure as its underlying
+# data storage.
 
 from dynamic_array import *
 
@@ -51,8 +51,10 @@ class Queue:
     # -----------------------------------------------------------------------
 
     def enqueue(self, value: object) -> None:
-        """Adds a new value at the end of the queue. Implemented with O(1) amortized runtime complexity."""
+        """Adds a new value at the end of the queue. Implemented with O(1) amortized runtime complexity.
+        Does not return anything."""
 
+        # Calls append method.
         self._da.append(value)
 
     def dequeue(self) -> object:
@@ -65,7 +67,7 @@ class Queue:
 
         # Must get value before removal, calls get_at_index method to return the element from the start of the queue.
         start_element = self._da.get_at_index(0)
-        # Calls remove_at_index method to remove the element from the top.
+        # Calls remove_at_index method to remove the element from the start.
         self._da.remove_at_index(0)
 
         # Returns the element from the start of the queue that was removed.

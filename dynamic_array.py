@@ -1,8 +1,8 @@
 # Name: Alexandra Diduck
 # OSU Email: diducka@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment: 2
-# Due Date: 10/18/21
+# Assignment: 3
+# Due Date: 10/25/21
 # Description: Implements a DynamicArray class. The DynamicArray class uses the StaticArray object as its
 # underlying data storage container and provides methods.
 
