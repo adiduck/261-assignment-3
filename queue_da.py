@@ -51,17 +51,25 @@ class Queue:
     # -----------------------------------------------------------------------
 
     def enqueue(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
+        """Adds a new value at the end of the queue. Implemented with O(1) amortized runtime complexity."""
 
         self._da.append(value)
 
     def dequeue(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        """Removes and returns the value from the beginning of the queue. If the queue is empty, the method
+        raises a QueueException. Implemented with O(N) runtime complexity."""
+
+        # If the queue is empty, raises exception.
+        if self._da.is_empty():
+            raise QueueException
+
+        # Must get value before removal, calls get_at_index method to return the element from the start of the queue.
+        start_element = self._da.get_at_index(0)
+        # Calls remove_at_index method to remove the element from the top.
+        self._da.remove_at_index(0)
+
+        # Returns the element from the top of the stack that was removed.
+        return start_element
 
 
 # ------------------- BASIC TESTING -----------------------------------------
