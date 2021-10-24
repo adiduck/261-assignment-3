@@ -68,7 +68,7 @@ class Queue:
         # Calls remove_at_index method to remove the element from the top.
         self._da.remove_at_index(0)
 
-        # Returns the element from the top of the stack that was removed.
+        # Returns the element from the start of the queue that was removed.
         return start_element
 
 
