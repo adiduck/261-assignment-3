@@ -192,7 +192,6 @@ class LinkedList:
             raise SLLException
 
         cur = self._head
-
         while cur != self._tail and cur._next._value != value:
             cur = cur._next
 
