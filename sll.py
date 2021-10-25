@@ -88,13 +88,20 @@ class LinkedList:
     def add_back(self, value: object) -> None:
         """Method adds a new node at the end of the list (right before the sentinel)."""
 
+        # Travels the list, starting at the head.
         cur = self._head
 
+        # Iterates through the list and updates the current node till we reach the right position,
+        # right before the tail.
         while cur._next != self._tail:
+            # Progresses pointer.
             cur = cur._next
 
+        # Creates a new node.
         new_node = SLNode(value)
+        # Points new node's next to the tail.
         new_node._next = cur._next
+        # Makes the new node the last node in the linked list, before the tail.
         cur._next = new_node
 
     def insert_at_index(self, index: int, value: object) -> None:
@@ -104,62 +111,78 @@ class LinkedList:
         if index < 0 or index > self.length():
             raise SLLException
 
-        # travel pointer initialized to head
+        # Travel pointer initialized to head
         cur = self._head
-        # integer counter to count how many times the travel pointer goes
+        # Integer counter to count how many times the travel pointer goes
         # to the next chain.
         count = 0
 
+        # Iterates through the list and updates the current node till we reach the right position,
+        # where the counter equals the index.
         while count != index:
+            # Progresses pointer.
             cur = cur._next
             count += 1
 
         new_node = SLNode(value)
+        # Re-points and adds the new node.
         new_node._next = cur._next
         cur._next = new_node
 
     def remove_front(self) -> None:
         """Removes the first node from the list. If the list is empty, the method raises a SLLException."""
 
+        # Raises exception if empty.
         if self.is_empty():
             raise SLLException
 
+        # Re-points to 'remove' by 'skipping' over node.
         self._head._next = self._head._next._next
 
     def remove_back(self) -> None:
         """Removes the last node from the list. If the list is empty, the method raises a custom SLLException."""
 
+        # Raises exception if empty.
         if self.is_empty():
             raise SLLException
 
         cur = self._head
 
+        # Iterates through list to get to position before the tail node.
         while cur._next._next != self._tail:
+            # Progresses pointer.
             cur = cur._next
+        # Updates pointer.
         cur._next = self._tail
 
     def remove_at_index(self, index: int) -> None:
         """Method removes a node from the list given its index. If the provided index is invalid, the method
         raises a custom SLLException."""
 
+        # Invalid conditions:
         if self.is_empty() or index < 0 or index > self.length() - 1:
             raise SLLException
 
+        # Initializes count.
         count = 0
         cur = self._head
 
+        # Iterates through the list and progresses node till condition is met, where we get to the given index.
         while count != index:
             cur = cur._next
             count += 1
+        # Updates pointers.
         cur._next = cur._next._next
 
     def get_front(self) -> object:
         """Method returns the value from the first node in the list without removing it. If the list is empty,
         method raises a SLLException."""
 
+        # Raises exception if empty.
         if self.is_empty():
             raise SLLException
 
+        # Returns the value at the first node.
         return self._head._next._value
 
     def get_back(self) -> object:
@@ -171,38 +194,51 @@ class LinkedList:
 
         cur = self._head
 
+        # Iterates through list and updates travel node till position before the tail is reached.
         while cur._next != self._tail:
             cur = cur._next
+        # Returns the value at the travel node/right before sentinel.
         return cur._value
 
     def remove(self, value: object) -> bool:
         """Traverses the list from the beginning to the end and removes the first node in the list that matches
-        the provided "value" object. Returns True if some node was actually removed from the list."""
+        the provided "value" object. Returns True if some node was actually removed from the list. Otherwise,
+        returns False."""
 
         cur = self._head
+        # Traverses list and updates traveler till the value of the node matches the passed object.
         while cur != self._tail and cur._next._value != value:
             cur = cur._next
 
+        # If its empty or contains the value None, we can just return False as there's nothing to remove.
         if cur._next == None or self.is_empty():
             return False
         else:
+            # Removes the node that matches the passed value by 'skipping' over it.
             cur._next = cur._next._next
             return True
 
     def count(self, value: object) -> int:
         """Method counts the number of elements in the list that match the provided "value" object."""
 
+        # If its empty, there is nothing to count, returns 0.
         if self.is_empty():
             return 0
 
+        # Initializes count to 0.
         count = 0
 
+        # Don't count head (or tail).
         cur = self._head._next
 
+        # Iterates through list till end:
         while cur != self._tail:
+            # If the values match, increment the count by 1.
             if cur._value == value:
                 count += 1
+            # Progress the node.
             cur = cur._next
+        # Returns the count after traversing the entire list.
         return count
 
     def slice(self, start_index: int, size: int) -> object:
@@ -221,15 +257,23 @@ class LinkedList:
         if start_index >= self.length():
             raise SLLException
 
+        # Creates a new linked list object.
         new_ll = LinkedList()
+        # Initializes 'current' index to 0.
         cur_index = 0
         cur = self._head._next
 
         while cur_index != (start_index + size):
+            # When we get to the point where we hit the start index, we can then add those nodes at those indexes
+            # that fall within that given size to the new linked list object.
             if start_index <= cur_index < (start_index + size):
+                # Calls add_back method to add a new node at the end of the list.
                 new_ll.add_back(cur._value)
+            # Progresses index.
             cur_index += 1
+            # Progresses node.
             cur = cur._next
+        # Returns the object.
         return new_ll
 
 if __name__ == '__main__':
