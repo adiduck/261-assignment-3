@@ -163,13 +163,25 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+
+        if self.is_empty():
+            raise SLLException
+
+        return self._head._next._value
 
     def get_back(self) -> object:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            raise SLLException
+
+        cur = self._head
+
+        while cur._next != self._tail:
+            cur = cur._next
+        return cur._value
+
 
     def remove(self, value: object) -> bool:
         """
@@ -268,27 +280,27 @@ if __name__ == '__main__':
     print(list)
 
 
-    # print('\n# get_front example 1')
-    # list = LinkedList(['A', 'B'])
-    # print(list.get_front())
-    # print(list.get_front())
-    # list.remove_front()
-    # print(list.get_front())
-    # list.remove_back()
-    # try:
-    #     print(list.get_front())
-    # except Exception as e:
-    #     print(type(e))
-    #
-    #
-    # print('\n# get_back example 1')
-    # list = LinkedList([1, 2, 3])
-    # list.add_back(4)
-    # print(list.get_back())
-    # list.remove_back()
-    # print(list)
-    # print(list.get_back())
-    #
+    print('\n# get_front example 1')
+    list = LinkedList(['A', 'B'])
+    print(list.get_front())
+    print(list.get_front())
+    list.remove_front()
+    print(list.get_front())
+    list.remove_back()
+    try:
+        print(list.get_front())
+    except Exception as e:
+        print(type(e))
+
+
+    print('\n# get_back example 1')
+    list = LinkedList([1, 2, 3])
+    list.add_back(4)
+    print(list.get_back())
+    list.remove_back()
+    print(list)
+    print(list.get_back())
+
     #
     # print('\n# remove example 1')
     # list = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
