@@ -3,8 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: 3
 # Due Date: 10/25/2021
-# Description:
-
+# Description: Implements the Deque and Bag ADT interfaces with a Singly Linked List data structure.
 
 
 class SLLException(Exception):
@@ -89,15 +88,14 @@ class LinkedList:
     def add_back(self, value: object) -> None:
         """Method adds a new node at the end of the list (right before the sentinel)."""
 
-        # new_node = SLNode(value)
-        #
-        # while self._head._next != self._tail:
-        #     self._head = self._head._next
-        #     self._head._next = self._head._next._next
-        # self._head._next = new_node
-        # new_node._next = self._tail
+        cur = self._head
 
-        pass
+        while cur._next != self._tail:
+            cur = cur._next
+
+        new_node = SLNode(value)
+        new_node._next = cur._next
+        cur._next = new_node
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
