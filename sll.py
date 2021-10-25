@@ -98,9 +98,9 @@ class LinkedList:
         cur._next = new_node
 
     def insert_at_index(self, index: int, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
+        """Adds a new value at the specified index position in the linked list. If the provided index is invalid,
+        the method raises a custom SLLException."""
+
         if index < 0 or index > self.length():
             raise SLLException
 
@@ -119,9 +119,7 @@ class LinkedList:
         cur._next = new_node
 
     def remove_front(self) -> None:
-        """
-        TODO: Write this implementation
-        """
+        """Removes the first node from the list. If the list is empty, the method raises a SLLException."""
 
         if self.is_empty():
             raise SLLException
@@ -129,9 +127,7 @@ class LinkedList:
         self._head._next = self._head._next._next
 
     def remove_back(self) -> None:
-        """
-        TODO: Write this implementation
-        """
+        """Removes the last node from the list. If the list is empty, the method raises a custom SLLException."""
 
         if self.is_empty():
             raise SLLException
@@ -143,9 +139,8 @@ class LinkedList:
         cur._next = self._tail
 
     def remove_at_index(self, index: int) -> None:
-        """
-        TODO: Write this implementation
-        """
+        """Method removes a node from the list given its index. If the provided index is invalid, the method
+        raises a custom SLLException."""
 
         if self.is_empty() or index < 0 or index > self.length() - 1:
             raise SLLException
@@ -158,11 +153,9 @@ class LinkedList:
             count += 1
         cur._next = cur._next._next
 
-
     def get_front(self) -> object:
-        """
-        TODO: Write this implementation
-        """
+        """Method returns the value from the first node in the list without removing it. If the list is empty,
+        method raises a SLLException."""
 
         if self.is_empty():
             raise SLLException
@@ -170,9 +163,9 @@ class LinkedList:
         return self._head._next._value
 
     def get_back(self) -> object:
-        """
-        TODO: Write this implementation
-        """
+        """Returns the value from the last node in the list without removing it. If the list is empty, the
+        method raises a SLLException."""
+
         if self.is_empty():
             raise SLLException
 
@@ -182,14 +175,9 @@ class LinkedList:
             cur = cur._next
         return cur._value
 
-
     def remove(self, value: object) -> bool:
-        """
-        TODO: Write this implementation
-        """
-
-        # if self.is_empty():
-        #     raise SLLException
+        """Traverses the list from the beginning to the end and removes the first node in the list that matches
+        the provided "value" object. Returns True if some node was actually removed from the list."""
 
         cur = self._head
         while cur != self._tail and cur._next._value != value:
@@ -202,9 +190,7 @@ class LinkedList:
             return True
 
     def count(self, value: object) -> int:
-        """
-        TODO: Write this implementation
-        """
+        """Method counts the number of elements in the list that match the provided "value" object."""
 
         if self.is_empty():
             return 0
@@ -220,10 +206,12 @@ class LinkedList:
         return count
 
     def slice(self, start_index: int, size: int) -> object:
-        """
-        TODO: Write this implementation
-        """
-        # conditions:
+        """Method returns a new LinkedList object that contains the requested number of nodes from the original list
+        starting with the node located at the requested start index. If the provided start index is invalid or
+        if there are not enough nodes between the start index and the end of the list to make a slice of the
+        requested size, this method raises a custom “SLLException”.Implemented in O(N) runtime."""
+
+        # Conditions:
         if size < 0:
             raise SLLException
         if start_index < 0:
