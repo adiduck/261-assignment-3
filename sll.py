@@ -132,7 +132,15 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+
+        if self.is_empty():
+            raise SLLException
+
+        cur = self._head
+
+        while cur._next._next != self._tail:
+            cur = cur._next
+        self._tail = cur._next
 
     def remove_at_index(self, index: int) -> None:
         """
@@ -217,23 +225,24 @@ if __name__ == '__main__':
         except Exception as e:
             print(type(e))
 
-    #
-    # print('\n# remove_back example 1')
-    # list = LinkedList()
-    # try:
-    #     list.remove_back()
-    # except Exception as e:
-    #     print(type(e))
-    # list.add_front('Z')
-    # list.remove_back()
+
+    print('\n# remove_back example 1')
+    list = LinkedList()
+    try:
+        list.remove_back()
+    except Exception as e:
+        print(type(e))
+    list.add_front('Z')
     # print(list)
-    # list.add_front('Y')
-    # list.add_back('Z')
-    # list.add_front('X')
-    # print(list)
-    # list.remove_back()
-    # print(list)
-    #
+    list.remove_back()
+    print(list)
+    list.add_front('Y')
+    list.add_back('Z')
+    list.add_front('X')
+    print(list)
+    list.remove_back()
+    print(list)
+
     #
     # print('\n# remove_at_index example 1')
     # list = LinkedList([1, 2, 3, 4, 5, 6])
