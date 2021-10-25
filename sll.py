@@ -101,7 +101,22 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        if index < 0 or index > self.length():
+            raise SLLException
+
+        # travel pointer initialized to head
+        cur = self._head
+        # integer counter to count how many times the travel pointer goes
+        # to the next chain.
+        count = 0
+
+        while count != index:
+            cur = cur._next
+            count += 1
+
+        new_node = SLNode(value)
+        new_node._next = cur._next
+        cur._next = new_node
 
     def remove_front(self) -> None:
         """
