@@ -140,7 +140,7 @@ class LinkedList:
 
         while cur._next._next != self._tail:
             cur = cur._next
-        self._tail = cur._next
+        cur._next = self._tail
 
     def remove_at_index(self, index: int) -> None:
         """
