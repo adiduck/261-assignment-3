@@ -187,23 +187,63 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+
+        if self.is_empty():
+            raise SLLException
+
+        cur = self._head
+
+        while cur != self._tail and cur._next._value != value:
+            cur = cur._next
+
+        if cur._next == None:
+            return False
+        else:
+            cur._next = cur._next._next
+            return True
 
     def count(self, value: object) -> int:
         """
         TODO: Write this implementation
         """
-        pass
+
+        if self.is_empty():
+            return 0
+
+        count = 0
+
+        cur = self._head._next
+
+        while cur != self._tail:
+            if cur._value == value:
+                count += 1
+            cur = cur._next
+        return count
 
     def slice(self, start_index: int, size: int) -> object:
         """
         TODO: Write this implementation
         """
-        pass
+        # conditions:
+        if size < 0:
+            raise SLLException
+        if start_index < 0:
+            raise SLLException
+        if (start_index + size - 1) >= self.length():
+            raise SLLException
+        if start_index >= self.length():
+            raise SLLException
 
+        new_ll = LinkedList()
+        cur_index = 0
+        cur = self._head._next
 
-
-
+        while cur_index != (start_index + size):
+            if start_index <= cur_index < (start_index + size):
+                new_ll.add_back(cur._value)
+            cur_index += 1
+            cur = cur._next
+        return new_ll
 
 if __name__ == '__main__':
     pass
@@ -301,35 +341,35 @@ if __name__ == '__main__':
     print(list)
     print(list.get_back())
 
-    #
-    # print('\n# remove example 1')
-    # list = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    # print(list)
-    # for value in [7, 3, 3, 3, 3]:
-    #     print(list.remove(value), list.length(), list)
-    #
-    #
-    # print('\n# count example 1')
-    # list = LinkedList([1, 2, 3, 1, 2, 2])
-    # print(list, list.count(1), list.count(2), list.count(3), list.count(4))
-    #
-    #
-    # print('\n# slice example 1')
-    # list = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    # ll_slice = list.slice(1, 3)
-    # print(list, ll_slice, sep="\n")
-    # ll_slice.remove_at_index(0)
-    # print(list, ll_slice, sep="\n")
-    #
-    #
-    # print('\n# slice example 2')
-    # list = LinkedList([10, 11, 12, 13, 14, 15, 16])
-    # print("SOURCE:", list)
-    # slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
-    # for index, size in slices:
-    #     print("Slice", index, "/", size, end="")
-    #     try:
-    #         print(" --- OK: ", list.slice(index, size))
-    #     except:
-    #         print(" --- exception occurred.")
+
+    print('\n# remove example 1')
+    list = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    print(list)
+    for value in [7, 3, 3, 3, 3]:
+        print(list.remove(value), list.length(), list)
+
+
+    print('\n# count example 1')
+    list = LinkedList([1, 2, 3, 1, 2, 2])
+    print(list, list.count(1), list.count(2), list.count(3), list.count(4))
+
+
+    print('\n# slice example 1')
+    list = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ll_slice = list.slice(1, 3)
+    print(list, ll_slice, sep="\n")
+    ll_slice.remove_at_index(0)
+    print(list, ll_slice, sep="\n")
+
+
+    print('\n# slice example 2')
+    list = LinkedList([10, 11, 12, 13, 14, 15, 16])
+    print("SOURCE:", list)
+    slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
+    for index, size in slices:
+        print("Slice", index, "/", size, end="")
+        try:
+            print(" --- OK: ", list.slice(index, size))
+        except:
+            print(" --- exception occurred.")
 
