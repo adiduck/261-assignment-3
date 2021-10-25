@@ -188,14 +188,14 @@ class LinkedList:
         TODO: Write this implementation
         """
 
-        if self.is_empty():
-            raise SLLException
+        # if self.is_empty():
+        #     raise SLLException
 
         cur = self._head
         while cur != self._tail and cur._next._value != value:
             cur = cur._next
 
-        if cur._next == None:
+        if cur._next == None or self.is_empty():
             return False
         else:
             cur._next = cur._next._next
